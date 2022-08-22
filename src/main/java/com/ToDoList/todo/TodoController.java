@@ -2,10 +2,12 @@ package com.ToDoList.todo;
 
 import com.ToDoList.todo.dto.PatchTodoDto;
 import com.ToDoList.todo.dto.PostTodoDto;
+import com.ToDoList.todo.dto.ResponseTodoDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -50,5 +52,18 @@ public class TodoController {
     public ResponseEntity deleteTodo(@PathVariable("todo-id")Long todoId) {
         todoService.delete(todoId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/status")
+    public ResponseEntity categorize() {
+        List<Todo> todoList = todoService.findByStatusTodo();
+        List<Todo> doingList = todoService.findByStatusDoing();
+        List<Todo> doneList = todoService.findByStatusDone();
+
+        List<List<ResponseTodoDto>> list =
+                List.of(mapper.todoToResponseTodoDtos(todoList),
+                mapper.todoToResponseTodoDtos(doingList),
+                mapper.todoToResponseTodoDtos(doneList));
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package com.ToDoList.todo.dto;
 
+import com.ToDoList.todo.Status;
 import com.ToDoList.todo.Todo;
 import com.ToDoList.validator.NotSpace;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class PatchTodoDto {
     @Range(min = 1, max = 3)
     private int importance;
 
-    private Todo.Status status;
+    private Status status;
 
     public void setTodoId(Long todoId) {
         this.todoId = todoId;
