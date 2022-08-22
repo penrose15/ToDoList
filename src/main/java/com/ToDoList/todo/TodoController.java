@@ -35,6 +35,7 @@ public class TodoController {
     @PatchMapping("/{todo-id}")
     public ResponseEntity updateTodo(@PathVariable("todo-id") @Positive Long todoId,
                                      @RequestBody @Valid PatchTodoDto patchTodoDto) {
+
         patchTodoDto.setTodoId(todoId);
         Todo todo = todoService.update(mapper.patchTodoDtoToTodo(patchTodoDto));
         return new ResponseEntity<>(mapper.todoToResponseTodoDto(todo),HttpStatus.OK);
@@ -70,4 +71,5 @@ public class TodoController {
                 mapper.todoToResponseTodoDtos(doneList));
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
 }

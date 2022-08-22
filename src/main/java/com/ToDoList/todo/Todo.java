@@ -1,15 +1,23 @@
 package com.ToDoList.todo;
 
 import com.ToDoList.audit.Auditable;
+
 import lombok.*;
+
+
+import lombok.Getter;
+import lombok.Setter;
+
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Todo extends Auditable {
 
     @Id
@@ -28,10 +36,7 @@ public class Todo extends Auditable {
 
     @Enumerated(value = EnumType.STRING)
     private Status status;
-
     //TODO, DOING, DONE
-
-
 
 
     public void setTitle(String title) {
@@ -49,6 +54,5 @@ public class Todo extends Auditable {
     public void setStatus(Status status) {
         this.status = status;
     }
-
 
 }

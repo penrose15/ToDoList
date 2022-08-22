@@ -1,6 +1,8 @@
 package com.ToDoList.todo.dto;
 
+
 import com.ToDoList.todo.Status;
+
 import com.ToDoList.todo.Todo;
 import lombok.Getter;
 import org.hibernate.validator.constraints.Range;
@@ -20,5 +22,7 @@ public class PostTodoDto {
     @Range(min = 1, max = 3)
     private int importance;
 
+
     private Status status;
+
 }
