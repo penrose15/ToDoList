@@ -2,6 +2,7 @@ package com.ToDoList.todo;
 
 import com.ToDoList.exception.BusinessLogicException;
 import com.ToDoList.exception.ExceptionList;
+import com.ToDoList.todo.sequence.Sequence;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,11 +43,17 @@ public class TodoService {
         return verifyTodo(todoId);
     }
     //todo 리스트로 전체 조회
-    public List<Todo> findAll() {
-        List<Todo> todoList = todoRepository.findAll();
-        if(todoList.isEmpty()) throw new BusinessLogicException(ExceptionList.TODO_NOT_FOUND);
+    public List<Todo> findAll(Sequence sequence) {
+        List<Todo> list = new ArrayList<>();
+        if(sequence.equals(Sequence.IMPORTANCE_ORDER)) {
+            list = todoRepository.findAllOrderByImportance();
+        } else if (sequence.equals(Sequence.TITLE_ALPHABETICAL_ORDER)) {
+            list = todoRepository.findAllOrderByTitle();
+        } else if(sequence.equals(Sequence.CREATED_AT)) {
+            list = todoRepository.findAll(); //
+        }
+        return list;
 
-        return todoList;
     }
     //todo 삭제
     public void delete(Long todoId) {

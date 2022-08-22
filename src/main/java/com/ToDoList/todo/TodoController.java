@@ -3,6 +3,7 @@ package com.ToDoList.todo;
 import com.ToDoList.todo.dto.PatchTodoDto;
 import com.ToDoList.todo.dto.PostTodoDto;
 import com.ToDoList.todo.dto.ResponseTodoDto;
+import com.ToDoList.todo.sequence.Sequence;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -48,8 +49,15 @@ public class TodoController {
     }
     //전체 todoList 조회
     @GetMapping
-    public ResponseEntity getToDoList() {
-        List<Todo> list= todoService.findAll();
+    public ResponseEntity getToDoList(@RequestParam(name ="sort", defaultValue = "3") String sort) {
+        if(Integer.parseInt(sort)<1 || Integer.parseInt(sort)>3) throw new RuntimeException("1 또는 2를 선택하세요");
+        List<Todo> list = new ArrayList<>();
+        for(Sequence s : Sequence.values()) {
+            if(sort.equals(s.getValue())) {
+                list = todoService.findAll(s);
+                break;
+            }
+        }
         return new ResponseEntity<>(mapper.todoToResponseTodoDtos(list), HttpStatus.OK);
     }
     //todo 삭제

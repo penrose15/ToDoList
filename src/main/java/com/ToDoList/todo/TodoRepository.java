@@ -11,6 +11,12 @@ public interface TodoRepository extends JpaRepository<Todo, Long> {
 
     List<Todo> findByStatus(Status status);
 
+    List<Todo> findAllOrderByImportance();
+
+    List<Todo> findAllOrderByTitle();
+
+    List<Todo> findByStatusOrderByImportance(Status status);
+
 
     default List<Todo> findByStatusIsTodo() {
         return findByStatus(Status.TODO);
