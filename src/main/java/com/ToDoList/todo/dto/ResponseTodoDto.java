@@ -1,11 +1,14 @@
 package com.ToDoList.todo.dto;
 
+
+import com.ToDoList.todo.Status;
 import com.ToDoList.todo.Todo;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
+@AllArgsConstructor
 public class ResponseTodoDto {
 
     private Long todoId;
@@ -16,5 +19,5 @@ public class ResponseTodoDto {
 
     private int importance;
 
-    private Todo.Status status;
+    private Status status;
 }

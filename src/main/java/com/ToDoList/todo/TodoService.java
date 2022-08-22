@@ -6,6 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +24,7 @@ public class TodoService {
 
     //todo 생성
     public Todo create(Todo todo) {
-        findTodo(todo.getTodoId());
+    
         return todoRepository.save(todo);
     }
     //todo 수정
@@ -63,4 +66,25 @@ public class TodoService {
         Optional<Todo> todo = todoRepository.findById(id);
         return todo.orElseThrow(() ->new BusinessLogicException(ExceptionList.TODO_NOT_FOUND));
     }
+
+    //Status별 조회
+    private List<Todo> findByStatus(Status status) {
+        List<Todo> list = todoRepository.findByStatus(status);
+
+        return list;
+    }
+
+    public List<Todo> findByStatusTodo() {
+        List<Todo> list = todoRepository.findByStatusIsTodo();
+        return list;
+    }
+    public List<Todo> findByStatusDoing() {
+        List<Todo> list = todoRepository.findByStatusIsDoing();
+        return list;
+    }
+    public List<Todo> findByStatusDone() {
+        List<Todo> list = todoRepository.findByStatusIsDone();
+        return list;
+    }
+
 }
