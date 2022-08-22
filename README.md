@@ -13,4 +13,4 @@
 
 ## Project Wiki
 
-(링크)
+https://github.com/penrose15/ToDoList/wiki
