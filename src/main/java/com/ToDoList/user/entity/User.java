@@ -1,29 +1,41 @@
 package com.ToDoList.user.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.ToDoList.audit.Auditable;
+import com.ToDoList.todo.entity.Todo;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Setter
+@Builder
 @Getter
 @Table(name = "users")
 @Entity
-public class User {
+public class User extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false ,unique = true)
     private String email;
 
+    @Column(nullable = false)
     private Role role = Role.USER;
+
+    @OneToMany(mappedBy = "user")
+    private List<Todo> todoList = new ArrayList<>();
+
+    public void addTodo(Todo todo) {
+        todoList.add(todo);
+        if(todo.getUser() != this) {
+            todo.setUser(this);
+        }
+    }
 
     public enum Role {
         USER,
@@ -31,9 +43,4 @@ public class User {
         ADMIN;
     }
 
-    public User(String name, String email, Role role) {
-        this.name = name;
-        this.email = email;
-        this.role = role;
-    }
 }

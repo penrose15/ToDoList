@@ -3,6 +3,7 @@ package com.ToDoList.todo.entity;
 import com.ToDoList.audit.Auditable;
 
 import com.ToDoList.todo.status.Status;
+import com.ToDoList.user.entity.User;
 import lombok.*;
 
 
@@ -34,6 +35,17 @@ public class Todo extends Auditable {
     @Column
     private int importance;
     //우선순위
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
+    public void addUser(User user) {
+        this.user = user;
+        if(!this.user.getTodoList().contains(this)) {
+            this.user.getTodoList().add(this);
+        }
+    }
 
     @Enumerated(value = EnumType.STRING)
     private Status status;
