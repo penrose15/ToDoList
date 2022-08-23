@@ -30,4 +30,10 @@ public class User {
         MANAGER,
         ADMIN;
     }
+
+    public User(String name, String email, Role role) {
+        this.name = name;
+        this.email = email;
+        this.role = role;
+    }
 }

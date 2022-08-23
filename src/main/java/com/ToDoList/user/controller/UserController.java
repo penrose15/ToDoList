@@ -17,29 +17,35 @@ import java.util.List;
 public class UserController {
 
     //test를 위한 스텁 데이터
-    User user = new User(1L, "hhw","abc@gmail.com", User.Role.USER);
+    User user = new User( "hhw","abc@gmail.com", User.Role.USER);
 
     @PostMapping //회원가입
     public ResponseEntity sign_up(@RequestBody User user) {
 
-        return new ResponseEntity<>(new SingleResponseDto<>(this.user), HttpStatus.CREATED);
+        User response = new User(1L, "hhw","abc@gmail.com", User.Role.USER);
+        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{user-id}") //user정보 수정
     public ResponseEntity updateMember(@PathVariable("user-id")Long userId,
                                        @RequestBody User user) {
-        return new ResponseEntity<>(new SingleResponseDto<>(this.user), HttpStatus.OK);
+        this.user.setUserId(userId);
+
+        User response = new User(1L, "hhw","abc@gmail.com", User.Role.USER);
+        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 
     @GetMapping("/{user-id}") //user 조회
     public ResponseEntity getMember(@PathVariable("user-id") Long userId) {
-        return new ResponseEntity<>(new SingleResponseDto<>(this.user), HttpStatus.OK);
+        User response = new User(1L, "hhw","abc@gmail.com", User.Role.USER);
+        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
     }
 
     @GetMapping//page로 user 전체 조회
     public ResponseEntity getMemberPage(@RequestParam int page, @RequestParam int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC);
-        List<User> list = new ArrayList<>(); list.add(this.user);
+        User response = new User(1L, "hhw","abc@gmail.com", User.Role.USER);
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC,"userId");
+        List<User> list = new ArrayList<>(); list.add(response);
         Page<User> pageList = new PageImpl<>(list,pageable,list.size());
 
 
