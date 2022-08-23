@@ -1,8 +1,11 @@
-package com.ToDoList.todo;
+package com.ToDoList.todo.controller;
 
+import com.ToDoList.todo.entity.Todo;
+import com.ToDoList.todo.service.TodoService;
 import com.ToDoList.todo.dto.PatchTodoDto;
 import com.ToDoList.todo.dto.PostTodoDto;
 import com.ToDoList.todo.dto.ResponseTodoDto;
+import com.ToDoList.todo.mapper.TodoMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -10,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.util.ArrayList;
 import java.util.List;
 
 @Validated

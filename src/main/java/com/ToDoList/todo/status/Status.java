@@ -1,4 +1,4 @@
-package com.ToDoList.todo;
+package com.ToDoList.todo.status;
 
 public enum Status{
     TODO("todo"),

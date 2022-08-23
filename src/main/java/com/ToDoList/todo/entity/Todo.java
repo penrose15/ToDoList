@@ -1,7 +1,8 @@
-package com.ToDoList.todo;
+package com.ToDoList.todo.entity;
 
 import com.ToDoList.audit.Auditable;
 
+import com.ToDoList.todo.status.Status;
 import lombok.*;
 
 

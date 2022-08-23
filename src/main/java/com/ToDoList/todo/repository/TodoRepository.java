@@ -1,8 +1,8 @@
-package com.ToDoList.todo;
+package com.ToDoList.todo.repository;
 
+import com.ToDoList.todo.status.Status;
+import com.ToDoList.todo.entity.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

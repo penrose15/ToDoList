@@ -1,8 +1,7 @@
 package com.ToDoList.todo.dto;
 
 
-import com.ToDoList.todo.Status;
-import com.ToDoList.todo.Todo;
+import com.ToDoList.todo.status.Status;
 import com.ToDoList.validator.NotSpace;
 import lombok.Getter;
 import org.hibernate.validator.constraints.Range;

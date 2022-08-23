@@ -1,13 +1,13 @@
-package com.ToDoList.todo;
+package com.ToDoList.todo.service;
 
 import com.ToDoList.exception.BusinessLogicException;
 import com.ToDoList.exception.ExceptionList;
-import org.springframework.data.domain.Page;
+import com.ToDoList.todo.status.Status;
+import com.ToDoList.todo.entity.Todo;
+import com.ToDoList.todo.repository.TodoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,5 +1,6 @@
-package com.ToDoList.todo;
+package com.ToDoList.todo.mapper;
 
+import com.ToDoList.todo.entity.Todo;
 import com.ToDoList.todo.dto.PatchTodoDto;
 import com.ToDoList.todo.dto.PostTodoDto;
 import com.ToDoList.todo.dto.ResponseTodoDto;

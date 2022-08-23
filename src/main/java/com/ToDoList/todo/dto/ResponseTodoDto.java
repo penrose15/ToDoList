@@ -1,10 +1,8 @@
 package com.ToDoList.todo.dto;
 
 
-import com.ToDoList.todo.Status;
-import com.ToDoList.todo.Todo;
+import com.ToDoList.todo.status.Status;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter

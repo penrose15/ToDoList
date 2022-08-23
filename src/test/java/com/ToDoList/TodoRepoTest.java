@@ -1,14 +1,13 @@
 package com.ToDoList;
 
-import com.ToDoList.todo.Status;
-import com.ToDoList.todo.Todo;
-import com.ToDoList.todo.TodoRepository;
+import com.ToDoList.todo.status.Status;
+import com.ToDoList.todo.entity.Todo;
+import com.ToDoList.todo.repository.TodoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
